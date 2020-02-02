@@ -3,54 +3,59 @@
         <Layout :style="{minHeight: '100vh'}">
             <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}"  v-model="isCollapsed">
                 <!-- :collapsible=true v-model="isCollapsed" -->
-                <Menu active-name="1-2" :theme="menuTheme" width="auto" :class="menuitemClasses">
+                <Menu active-name="0-3" :theme="menuTheme" width="auto" :class="menuitemClasses" :open-names="['1']" accordion >
                     <img src="../assets/img/navLogo2.png" style="width:100%;"/>
 
-                    <MenuItem name="0">
+                    <MenuItem name="0" to="/recommend">
                         <Icon type="ios-medal" />
                         <span>常用网站</span>
                     </MenuItem>
 
-                    <Submenu  name="1">
-                        <template slot="title" >
+                    <MenuGroup title="开发时域">
+
+                        <!-- <Submenu name="1">
+                            <template slot="title" >
                             <Icon type="md-code-working" />
                             <span style="">开发时域</span>
-                        </template>
+                        </template> -->
 
-                        <MenuItem v-for="item in categories1" :key="1-item.id" :name="1-item.id" :to="item.target">
+                        <MenuItem v-for="item in categories1" :key="item.id" :name="item.id" :to="item.target">
                             <Icon :type="item.icon" />
                             <span>{{item.name}}</span>
                         </MenuItem>
 
-                    </Submenu>
+                    </MenuGroup>
 
-                    <Submenu name="2">
-                        <template slot="title">
+                    <MenuGroup title="有关设计">
+                        <!-- 
+                            <Submenu name="2">
+                            <template slot="title">
                             <Icon type="md-flame" />
                             <span>有关设计</span>
-                        </template>
+                        </template> -->
 
-                        <MenuItem v-for="item in categories2" :key="1-item.id" :name="2-item.id" :to="item.target">
-                            <Icon :type="item.icon" />
-                            <span>{{item.name}}</span>
+                        <MenuItem v-for="item2 in categories2" :key="item2.id" :name="item2.id" :to="item2.target">
+                            <Icon :type="item2.icon" />
+                            <span>{{item2.name}}</span>
                         </MenuItem>
-                    </Submenu>
+                    </MenuGroup>
 
                     
 
-                    <Submenu name="3">
-                        <template slot="title">
+                    <MenuGroup title="在线工具">
+                        <!--<Submenu name="3"> 
+                            <template slot="title">
                             <Icon type="ios-globe" />
                             <span>在线工具</span>
-                        </template>
-
-                        <MenuItem v-for="item in categories3" :key="3-item.id" :name="3-item.id" :to="item.target">
-                            <Icon :type="item.icon" />
-                            <span>{{item.name}}</span>
+                        </template> -->
+                        
+                        <MenuItem v-for="item3 in categories3" :key="item3.id" :name="item3.id" :to="item3.target">
+                            <Icon :type="item3.icon" />
+                            <span>{{item3.name}}</span>
                         </MenuItem>
                         
                         
-                    </Submenu>
+                    </MenuGroup>
                 </Menu>
             </Sider>
             <Layout :style="{marginLeft: '200px'}">
@@ -62,16 +67,20 @@
                             {{ item.name }}
                         </Option>
                     </Select>
-                    <Input style="width:80%; float: left; margin-left:1%;" search enter-button="Search" placeholder="Enter something..." />
+
+                    <Input v-model="keyword" style="width:80%; float: left; margin-left:1%;" search enter-button="Search" placeholder="Enter something..." :autofocus="true" @on-search="search()" />
+
                 </Header>
 
                 <!--主体内容区域-->
                 <Content :style="{padding: '0 12px 16px'}">
-                    <Card :style="{margin: '16px 0'}">
-                        <div style="min-height: 600px">
-                            <router-view>
+                    <Card :style="{margin: '7px 0', background:'#f5f7f9', border:'0px',}" :dis-hover="true" :bordered="false">
+                        <div style="min-height: 600px; margin-top:-22px;">
+                            <transition name="mainContent">
+                                <router-view>
 
-                            </router-view>
+                                </router-view>
+                            </transition>
                         </div>
                     </Card>
                 </Content>
@@ -90,6 +99,7 @@
             return {
                 isCollapsed: false,
                 menuTheme:'dark',
+                keyword:'',
                 searchers:[
                     {
                         img: require('../assets/icons/doge_ico.png'),
@@ -123,6 +133,14 @@
                     },
                     
                 ],
+                searchFormats:[
+                    'https://www.dogedoge.com/results?q=',
+                    'https://www.google.com/search?q=',
+                    'http://www.baidu.com/baidu?wd=',
+                    'https://bing.com/search?q=',
+                    'https://magi.com/search?q=',
+                    'https://mijisou.com/?q=',
+                ],
                 categories1:[
                     {
                         id: 1,
@@ -131,56 +149,56 @@
                         target: '/devspace',
                     },
                     {
-                        id:2,
+                        id: 2,
                         name: '开发框架',
                         icon: 'logo-codepen',
-                        target: '',
+                        target: '/devspace#framework',
                     },
                     {
                         id:3,
                         name: '教程手册',
                         icon: 'ios-book',
-                        target: '',
+                        target: '/devspace#book',
                     },
                 ],
                 categories2: [
                     {
-                        id:1,
+                        id: 4,
                         name: '图标素材',
                         icon: 'md-flame',
-                        target: '',
+                        target: '/design#icon',
                     },
                     {
-                        id:2,
+                        id: 5,
                         name: '视频图片',
                         icon: 'md-videocam',
-                        target: '',
+                        target: '/design#vipic',
                     },
                 ],
                 categories3: [
                     {
-                        id:1,
+                        id: 6,
                         name: '综合站点',
                         icon: 'md-settings',
-                        target: '',
+                        target: '/onlinetools#complex',
                     },
                     {
-                        id:2,
+                        id: 7,
                         name: '图片处理',
                         icon: 'md-image',
-                        target: '',
+                        target: '/onlinetools#imgtool',
                     },
                     {
-                        id:3,
+                        id:8,
                         name: '资源搜索',
                         icon: 'md-search',
-                        target: '',
+                        target: '/onlinetools#resourcesearch',
                     },
                     {
-                        id:4,
+                        id:9,
                         name: '其他',
                         icon: 'ios-water',
-                        target: '',
+                        target: '/onlinetools#others',
                     },
                     
                 ],
@@ -189,7 +207,13 @@
                         img: require('../assets/icons/doge_ico.png'),
                         name: 'Doge',
                         value: 0,
-                    },
+                },
+                jumpTargets: [// 控制子菜单路由跳转
+                    '/',
+                    '/devspace',
+                    '/design',
+                    '/onlinetools'
+                ],
             };
         },
         computed: {
@@ -208,10 +232,21 @@
                 this.$data.currentSearch = this.searchers[this.$data.searchVal];
             },
             jumpTo(target){
-                this.$router.push({
-                    path: target,
-
-                })
+                console.log('tag', target)
+                let targetUrl = this.$data.jumpTargets[target[0]];// 目标url
+                let currentUrl = this.$route.path;
+                if( targetUrl != currentUrl){
+                    this.$router.push({
+                        path: targetUrl,
+                    })
+                }
+            },
+            /*进行搜索 */
+            search(){
+                let keyword = this.$data.keyword;                   // 获取关键词
+                let searchIndex = this.$data.currentSearch.value;   // 获取对应搜索引擎格式
+                let href = this.$data.searchFormats[searchIndex]+keyword;
+                window.open(href, '_blank');                        // 执行搜索
             }
         }
     }

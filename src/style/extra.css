@@ -1,0 +1,44 @@
+/* 网站卡片样式 */
+.card {
+    color: #515a6e;
+    width: 30%;
+    height: 125px;
+    overflow: hidden;
+    margin-left: 2.5%;
+    margin-top:12px;
+    float: left;
+    box-shadow: 0px 1px 6px rgba(0,0,0,.2);
+    /* background-color: #f5f7f9; */
+}
+.ivu-card .card:hover {
+    color: #2d8cf0;;
+    box-shadow: 0px 1px 18px rgba(0,0,0,.38);
+    border-color: #eee;
+}
+
+.card div {
+
+    word-wrap: break-word;
+}
+.card div img{
+    margin-top:2px;
+    width: 85px;
+    height: 85px;
+    float: left;
+    border-radius: 12px;
+}
+
+.card div h3{
+    /* margin-left: 90px; */
+    padding-top: 12px;
+}
+
+.card div p{
+    height: 54px;
+    margin-left: 96px; 
+    padding-top: 9px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

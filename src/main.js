@@ -5,6 +5,8 @@ import store from './store'
 import Element from "element-ui"
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+import './style/extra.css'
+import './style/transition.css'
 
 Vue.config.productionTip = false;
 

@@ -2,6 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Develop from '../components/Develop.vue'
+import Recommend from '../components/Recommend.vue'
+import Design from '../components/Design.vue'
+import Onlinetools from '../components/Onlinetools.vue'
+
+
 
 Vue.use(VueRouter)
 
@@ -10,8 +15,13 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+    redirect: '/recommend',
     children: [
-        { path: 'devspace', component: Develop, }
+        { path: 'recommend', component: Recommend},
+        { path: 'devspace', component: Develop, },
+        { path: 'design', component: Design, },
+        { path: 'onlinetools', component: Onlinetools,}
+
     ]
   },
   {
