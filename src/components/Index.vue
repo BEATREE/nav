@@ -1,99 +1,85 @@
 <template>
     <div class="layout">
-        <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}" >
-            <!-- :collapsible=true v-model="isCollapsed" -->
-            <Menu active-name="1-2" :theme="menuTheme" width="auto" :class="menuitemClasses">
-                <img src="../assets/img/navLogo2.png" style="width:100%;"/>
+        <Layout :style="{minHeight: '100vh'}">
+            <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}"  v-model="isCollapsed">
+                <!-- :collapsible=true v-model="isCollapsed" -->
+                <Menu active-name="1-2" :theme="menuTheme" width="auto" :class="menuitemClasses">
+                    <img src="../assets/img/navLogo2.png" style="width:100%;"/>
 
-                <MenuItem name="0">
-                    <Icon type="ios-medal" />
-                    <span>常用网站</span>
-                </MenuItem>
+                    <MenuItem name="0">
+                        <Icon type="ios-medal" />
+                        <span>常用网站</span>
+                    </MenuItem>
 
-                <Submenu name="1">
-                    <template slot="title">
-                        <Icon type="md-code-working" />
-                        <span>开发时域</span>
-                    </template>
-                    <MenuItem name="1-1">
-                        <Icon type="md-cloud-done" />
-                        <span>CDN WEB</span>
-                    </MenuItem>
-                    <MenuItem name="1-2">
-                        <Icon type="logo-codepen" />
-                        <span>开发框架</span>
-                    </MenuItem>
-                    <MenuItem name="1-3">
-                        <Icon type="ios-book" />
-                        <span>教程手册</span>
-                    </MenuItem>
-                </Submenu>
+                    <Submenu  name="1">
+                        <template slot="title" >
+                            <Icon type="md-code-working" />
+                            <span style="">开发时域</span>
+                        </template>
 
-                <Submenu name="2">
-                    <template slot="title">
-                        <Icon type="md-flame" />
-                        <span>有关设计</span>
-                    </template>
-                    <MenuItem name="2-1">
-                        <Icon type="md-flame" />
-                        <span>图标素材</span>
-                    </MenuItem>
-                    <MenuItem name="2-2">
-                        <Icon type="md-videocam" />
-                        <span>视频图片</span>
-                    </MenuItem>
-                </Submenu>
+                        <MenuItem v-for="item in categories1" :key="1-item.id" :name="1-item.id" :to="item.target">
+                            <Icon :type="item.icon" />
+                            <span>{{item.name}}</span>
+                        </MenuItem>
 
-                
+                    </Submenu>
 
-                <Submenu name="3">
-                    <template slot="title">
-                        <Icon type="ios-globe" />
-                        <span>在线工具</span>
-                    </template>
-                    <MenuItem name="3-1">
-                        <Icon type="md-settings" />
-                        <span>综合站点</span>
-                    </MenuItem>
-                    <MenuItem name="3-2">
-                        <Icon type="md-image" />
-                        <span>图片处理</span>
-                    </MenuItem>
-                    <MenuItem name="3-3">
-                        <Icon type="md-search" />
-                        <span>资源搜索</span>
-                    </MenuItem>
-                    <MenuItem name="3-4">
-                        <Icon type="ios-water" />
-                        <span>其他</span>
-                    </MenuItem>
+                    <Submenu name="2">
+                        <template slot="title">
+                            <Icon type="md-flame" />
+                            <span>有关设计</span>
+                        </template>
+
+                        <MenuItem v-for="item in categories2" :key="1-item.id" :name="2-item.id" :to="item.target">
+                            <Icon :type="item.icon" />
+                            <span>{{item.name}}</span>
+                        </MenuItem>
+                    </Submenu>
+
                     
-                </Submenu>
-            </Menu>
-        </Sider>
-        <Layout :style="{marginLeft: '200px'}">
-            <!--头部导航处-->
-            <Header class="rHead" :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)', margin:'12px 12px 0px 12px ', padding:'12px 6px 6px 6px' }">
-                <Select v-model="searchVal" style="width:15%; float: left;" @on-change="searcherSelected">
-                    <Avatar :src="currentSearch.img" slot="prefix" size="small" style="margin-right:6px;" />
-                    <Option v-for="item in searchers" :value="item.value" :key="item.value">
-                        {{ item.name }}
-                    </Option>
-                </Select>
-                <Input style="width:80%; float: left; margin-left:1%;" search enter-button="Search" placeholder="Enter something..." />
-            </Header>
-            <!--主体内容区域-->
-            <Content :style="{padding: '0 12px 16px'}">
-                <Card :style="{margin: '16px 0'}">
-                    <div style="height: 600px">
-                    
-                    </div>
-                </Card>
-            </Content>
-            <Footer>
-                Copyright - 2019 <a href="http://beatree.cn" target="_blank">beatree.cn</a> 大树导航 一个简洁的网址导航，本站将不定期更新收录网站资源。
-            </Footer>
-        </Layout>
+
+                    <Submenu name="3">
+                        <template slot="title">
+                            <Icon type="ios-globe" />
+                            <span>在线工具</span>
+                        </template>
+
+                        <MenuItem v-for="item in categories3" :key="3-item.id" :name="3-item.id" :to="item.target">
+                            <Icon :type="item.icon" />
+                            <span>{{item.name}}</span>
+                        </MenuItem>
+                        
+                        
+                    </Submenu>
+                </Menu>
+            </Sider>
+            <Layout :style="{marginLeft: '200px'}">
+                <!--头部导航处-->
+                <Header class="rHead" :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)', margin:'12px 12px 0px 12px ', padding:'12px 6px 6px 6px' }">
+                    <Select v-model="searchVal" style="width:15%; float: left;" @on-change="searcherSelected">
+                        <Avatar :src="currentSearch.img" slot="prefix" size="small" style="margin-right:6px;" />
+                        <Option v-for="item in searchers" :value="item.value" :key="item.value">
+                            {{ item.name }}
+                        </Option>
+                    </Select>
+                    <Input style="width:80%; float: left; margin-left:1%;" search enter-button="Search" placeholder="Enter something..." />
+                </Header>
+
+                <!--主体内容区域-->
+                <Content :style="{padding: '0 12px 16px'}">
+                    <Card :style="{margin: '16px 0'}">
+                        <div style="min-height: 600px">
+                            <router-view>
+
+                            </router-view>
+                        </div>
+                    </Card>
+                </Content>
+                <Footer>
+                    Copyright - 2019 <a href="http://beatree.cn" target="_blank">beatree.cn</a> 大树导航 一个简洁的网址导航，本站将不定期更新收录网站资源。
+                </Footer>
+            </Layout>
+            </Layout>
     </div>
 </template>
 
@@ -137,6 +123,67 @@
                     },
                     
                 ],
+                categories1:[
+                    {
+                        id: 1,
+                        name: 'CDN WEB',
+                        icon: 'md-cloud-done',
+                        target: '/devspace',
+                    },
+                    {
+                        id:2,
+                        name: '开发框架',
+                        icon: 'logo-codepen',
+                        target: '',
+                    },
+                    {
+                        id:3,
+                        name: '教程手册',
+                        icon: 'ios-book',
+                        target: '',
+                    },
+                ],
+                categories2: [
+                    {
+                        id:1,
+                        name: '图标素材',
+                        icon: 'md-flame',
+                        target: '',
+                    },
+                    {
+                        id:2,
+                        name: '视频图片',
+                        icon: 'md-videocam',
+                        target: '',
+                    },
+                ],
+                categories3: [
+                    {
+                        id:1,
+                        name: '综合站点',
+                        icon: 'md-settings',
+                        target: '',
+                    },
+                    {
+                        id:2,
+                        name: '图片处理',
+                        icon: 'md-image',
+                        target: '',
+                    },
+                    {
+                        id:3,
+                        name: '资源搜索',
+                        icon: 'md-search',
+                        target: '',
+                    },
+                    {
+                        id:4,
+                        name: '其他',
+                        icon: 'ios-water',
+                        target: '',
+                    },
+                    
+                ],
                 searchVal: 0,
                 currentSearch:{
                         img: require('../assets/icons/doge_ico.png'),
@@ -160,11 +207,18 @@
             searcherSelected(e){// 搜索引擎更改，需要更改相关搜索链接
                 this.$data.currentSearch = this.searchers[this.$data.searchVal];
             },
+            jumpTo(target){
+                this.$router.push({
+                    path: target,
+
+                })
+            }
         }
     }
 </script>
 
 <style scoped>
+
     .layout{
         border: 1px solid #d7dde4;
         background: #f5f7f9;
