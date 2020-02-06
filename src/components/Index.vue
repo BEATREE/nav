@@ -89,7 +89,7 @@
                     </Card>
                 </Content>
                 <Footer>
-                    Copyright - 2019 <a href="http://beatree.cn" target="_blank">beatree.cn</a> 大树导航 一个简洁的网址导航，本站将不定期更新收录网站资源。
+                    Copyright - 2020 <a href="https://beatree.cn" target="_blank">beatree.cn</a> 大树导航 一个简洁的网址导航 | 本站将不定期更新收录网站资源。
                 </Footer>
             </Layout>
             </Layout>
