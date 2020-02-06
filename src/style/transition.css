@@ -16,6 +16,9 @@
     transition: all .6s ease;
 } */
 
+*{
+    transition: all .8s ease-out;
+}
 /* 自定义的name属性对应的css */
 .mainContent-enter{
     opacity: 0;     /*不透明度，0全透明 1不透明*/
@@ -27,5 +30,5 @@
     position: absolute;				 /*解决进出时候 组件产生的上下位移*/
 }
 .mainContent-leave-active, .mainContent-enter-active{
-    transition: all .7s ease;
+    transition: all .9s ease-out;
 }

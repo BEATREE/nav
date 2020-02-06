@@ -1,5 +1,6 @@
 <template>
     <div class="devContainer">
+        
         <h2 id="cdn"># CDN WEB</h2>
         <Card class="card" v-for="item in sites" :key="item.id" :to="item.url" target="_blank" v-if="item.tag=='cdn'">
             <div style="text-align:center" >
@@ -134,14 +135,6 @@
                         desc:'全球最大的中文 Web 技术教程。在 W3School，你可以找到你所需要的所有的网站建设教程。',
                     },
                     {
-                        id: 10,
-                        tag:'frame',
-                        name: 'View UI',
-                        icon: require('../assets/website/vux.png'),
-                        url:'https://vux.li/?source=beatree.cn',
-                        desc:'Vue.js 移动端 UI 组件库，虽是个人维护，但项目还是很强的！',
-                    },
-                    {
                         id: 11,
                         tag:'frame',
                         name: 'NUXT JS',
@@ -204,6 +197,14 @@
                         icon: require('../assets/website/imooc.png'),
                         url:'https://www.imooc.com/?source=beatree.cn',
                         desc:'提供了丰富的移动端开发、php开发、web前端、android开发以及html5等视频教程资源公开课。并且富有交互性及趣味性，你还可以和朋友一起编程。',
+                    },
+                    {
+                        id: 19,
+                        tag:'frame',
+                        name: 'View UI',
+                        icon: require('../assets/website/vux.png'),
+                        url:'https://vux.li/?source=beatree.cn',
+                        desc:'Vue.js 移动端 UI 组件库，虽是个人维护，但项目还是很强的！',
                     },
                     
                 ],

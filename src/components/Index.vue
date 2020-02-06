@@ -64,7 +64,8 @@
             </Sider>
             <Layout :style="{marginLeft: '200px'}">
                 <!--头部导航处-->
-                <Header class="rHead" :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)', margin:'12px 12px 0px 12px ', padding:'12px 6px 6px 6px' }">
+                <Header class="rHead" :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)', margin:'12px 12px 0px 12px ', padding:'12px 6px 6px 6px'}">
+                    <!-- ,width: '82%', position:'fixed', -->
                     <Select v-model="searchVal" style="width:15%; float: left;" @on-change="searcherSelected">
                         <Avatar :src="currentSearch.img" slot="prefix" size="small" style="margin-right:6px;" />
                         <Option v-for="item in searchers" :value="item.value" :key="item.value">
