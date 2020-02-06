@@ -19,8 +19,17 @@
         </Card>
 
 
-        <h2 class="resourcesearch" ># 资源搜索</h2>
+        <h2 id="resourcesearch" ># 资源搜索</h2>
         <Card class="card" v-for="item in sites" :key="item.id" :to="item.url" target="_blank" v-if="item.tag=='resourcesearch'">
+            <div style="text-align:center" >
+                <img :src="item.icon">
+                <h3>{{item.name}}</h3>
+                <p>{{item.desc}}</p>
+            </div>
+        </Card>
+
+        <h2 id="others" ># 其他</h2>
+        <Card class="card" v-for="item in sites" :key="item.id" :to="item.url" target="_blank" v-if="item.tag=='others'">
             <div style="text-align:center" >
                 <img :src="item.icon">
                 <h3>{{item.name}}</h3>
@@ -118,11 +127,43 @@
                     },
                     {
                         id: 10,
-                        tag:'book',
-                        name: 'W3C School',
-                        icon: require('../assets/website/w3c.png'),
-                        url:'https://www.w3school.com.cn/?source=beatree.cn',
-                        desc:'全球最大的中文 Web 技术教程。在 W3School，你可以找到你所需要的所有的网站建设教程。',
+                        tag:'others',
+                        name: 'Temp Mail - Temporary Email',
+                        icon: require('../assets/website/tempmail.png'),
+                        url:'https://temp-mail.org/?source=beatree.cn',
+                        desc:'保护隐私，临时邮件提供临时的，安全的，匿名的，免费的，一次性的电子邮件地址。',
+                    },
+                    {
+                        id: 11,
+                        tag:'others',
+                        name: '隐私短信',
+                        icon: require('../assets/website/message.gif'),
+                        url:'https://www.yinsiduanxin.com/?source=beatree.cn',
+                        desc:'隐私短信免费在线接码平台,提供专属隐私短信,虚拟手机号码,临时注册APP专属手机小号,免费手机短信验证码接收代收服务,免费一次性邮箱验证码接收.号码包括中国大陆,香港,台湾,澳门,美国,日本,英国.',
+                    },
+                    {
+                        id: 12,
+                        tag:'others',
+                        name: 'FAST在线测速',
+                        icon: require('../assets/website/fasttest.png'),
+                        url:'https://fast.com/?source=beatree.cn',
+                        desc:'你的下载速度有多快？几秒钟后，fast.com在线测速即刻知晓！',
+                    },
+                    {
+                        id: 13,
+                        tag:'others',
+                        name: '西瓜视频放映厅',
+                        icon: require('../assets/website/xigua.png'),
+                        url:'https://www.ixigua.com/cinema/?source=beatree.cn',
+                        desc:'字节跳动旗下免费视频平台，放映厅频道为您提供经典高清电视剧、电影、热播综艺节目等资源，画面清晰、播放流畅、看视频就上西瓜视频',
+                    },
+                    {
+                        id: 14,
+                        tag:'others',
+                        name: '天外来客影视论坛',
+                        icon: require('../assets/website/video.gif'),
+                        url:'http://twlkbt.com/forum.php/?source=beatree.cn',
+                        desc:'高清电影资源论坛，BluRay720p,BluRay1080p,BluRay2160p 4k 电影下载',
                     },
                     
                 ],

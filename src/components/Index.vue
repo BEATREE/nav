@@ -11,6 +11,10 @@
                         <span>常用网站</span>
                     </MenuItem>
 
+                    <Anchor show-ink style="display:none;">
+                        <AnchorLink href="" title="Basic Usage" />
+                    </Anchor>
+
                     <MenuGroup title="开发时域">
 
                         <!-- <Submenu name="1">
@@ -146,7 +150,13 @@
                         id: 1,
                         name: 'CDN WEB',
                         icon: 'md-cloud-done',
-                        target: '/devspace',
+                        target: '/devspace#cdn',
+                    },
+                    {
+                        id:10,
+                        name: '自我充电',
+                        icon: 'ios-battery-charging',
+                        target:'/devspace#selfimprove'
                     },
                     {
                         id: 2,
