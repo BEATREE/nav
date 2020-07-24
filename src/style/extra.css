@@ -54,3 +54,6 @@
     overflow-y: scroll;
     scrollbar-width: none;
 }
+.devContainer{
+    padding-bottom: 25px;
+}

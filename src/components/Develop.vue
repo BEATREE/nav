@@ -201,7 +201,7 @@
                     {
                         id: 19,
                         tag:'frame',
-                        name: 'View UI',
+                        name: 'VUX',
                         icon: require('../assets/website/vux.png'),
                         url:'https://vux.li/?source=beatree.cn',
                         desc:'Vue.js 移动端 UI 组件库，虽是个人维护，但项目还是很强的！',
