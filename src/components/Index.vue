@@ -4,7 +4,7 @@
             <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}"  v-model="isCollapsed">
                 <!-- :collapsible=true v-model="isCollapsed" -->
                 <Menu active-name="0-3" :theme="menuTheme" width="auto" :class="menuitemClasses" :open-names="['1']" accordion >
-                    <img src="../assets/img/navLogo2.png" style="width:100%;"/>
+                    <img @click="toOuterLink('http://beatree.cn')" src="../assets/img/navLogo2.png" style="width:100%;"/>
 
                     <MenuItem name="0" to="/recommend">
                         <Icon type="ios-medal" />
@@ -107,41 +107,35 @@
                 keyword:'',
                 searchers:[
                     {
-                        img: require('../assets/icons/doge_ico.png'),
-                        name: 'Doge',
-                        value: 0,
-                    },
-                    {
                         img: require('../assets/icons/google_ico.png'),
                         name: 'Google',
-                        value: 1,
+                        value: 0,
                     },
                     {
                         img: require('../assets/icons/baidu_ico.png'),
                         name: 'Baidu',
-                        value: 2,
+                        value: 1,
                     },
                     {
                         img: require('../assets/icons/bing_ico.png'),
                         name: 'Bing',
-                        value: 3,
+                        value: 2,
                     },
                     {
                         img: require('../assets/icons/magi_ico.png'),
                         name: 'Magi',
-                        value: 4,
+                        value: 3,
                     },
                     {
                         img: require('../assets/icons/miji_ico.png'),
                         name: 'Mijisou',
-                        value: 5,
+                        value: 4,
                     },
                     
                 ],
                 searchFormats:[
-                    'https://www.dogedoge.com/results?q=',
                     'https://www.google.com/search?q=',
-                    'http://www.baidu.com/baidu?wd=',
+                    'https://www.baidu.com/s?wd=',
                     'https://bing.com/search?q=',
                     'https://magi.com/search?q=',
                     'https://mijisou.com/?q=',
@@ -213,10 +207,10 @@
                     },
                     
                 ],
-                searchVal: 0,
+                searchVal: 1,
                 currentSearch:{
-                        img: require('../assets/icons/doge_ico.png'),
-                        name: 'Doge',
+                        img: require('../assets/icons/google_ico.png'),
+                        name: 'Google',
                         value: 0,
                 },
                 jumpTargets: [// 控制子菜单路由跳转
@@ -240,7 +234,7 @@
                 this.$refs.side0.toggleCollapse();
             },
             searcherSelected(e){// 搜索引擎更改，需要更改相关搜索链接
-                this.$data.currentSearch = this.searchers[this.$data.searchVal];
+                this.$data.currentSearch = this.searchers.filter(item => item.value == this.$data.searchVal)[0];
             },
             jumpTo(target){
                 console.log('tag', target)
@@ -257,7 +251,11 @@
                 let keyword = this.$data.keyword;                   // 获取关键词
                 let searchIndex = this.$data.currentSearch.value;   // 获取对应搜索引擎格式
                 let href = this.$data.searchFormats[searchIndex]+keyword;
-                window.open(href, '_blank');                        // 执行搜索
+                this.toOuterLink(href);                             // 执行搜索
+            },
+
+            toOuterLink(href){
+                window.open(href, '_blank'); 
             }
         }
     }
